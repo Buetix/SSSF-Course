@@ -14,6 +14,8 @@ This course will provide understanding of server-side scripting, web application
 - Progressive Web Apps
 
 ## Project
+#### Project Idea
+TODO
 #### Project Description
 >Your task is to develop an app with your own backend implemented with Node.js. You can also add existing web services / resources >in a novel way. You can use whatever frontend frameworks as you like (React, Angular, Bootstrap, jQuery, Ionic, React Native >etc...).
 
