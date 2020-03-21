@@ -4,11 +4,11 @@ This course will provide understanding of server-side scripting, web application
 
 Course content:
 
-Node.js
-Express.js
-MongoDB
-Socket.io
-Cloud hosting
-Web application security
-GraphQL
-Progressive Web Apps
+- Node.js
+- Express.js
+- MongoDB
+- Socket.io
+- Cloud hosting
+- Web application security
+- GraphQL
+- Progressive Web Apps
