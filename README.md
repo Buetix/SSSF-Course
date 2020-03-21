@@ -1,9 +1,9 @@
 # Server-Side Scripting Frameworks
----
+
 This course will provide understanding of server-side scripting, web application frameworks and web application security
 
-Course content:
-
+## Course content:
+---
 - Node.js
 - Express.js
 - MongoDB
@@ -12,3 +12,7 @@ Course content:
 - Web application security
 - GraphQL
 - Progressive Web Apps
+
+
+## License
+This project is licensed under the GPL-3.0 License.
