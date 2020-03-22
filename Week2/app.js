@@ -1,22 +1,24 @@
 'use strict';
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
+const catRouter = require('./routes/catRoute');
+const userRouter = require('./routes/userRoutes');
+const bodyParser = require('body-parser');
+const multer = require('multer');
 
-app.get('/cat', (req, res) => {
-  res.send('From this endpoint you can get cats.')
-});
+app.use(cors());
+app.use('/public', express.static('week2_public_html'));
 
-app.get('/POST', (req, res) => {
-  res.send('With this endpoint you can add cats.')
-});
+app.use('/cat', catRouter);
+app.use('/users', userRouter);
 
-app.get('/PUT', (req, res) => {
-  res.send('With this endpoint you can edit cats.')
-});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/DELETE', (req, res) => {
-  res.send('With this endpoint you can delete cats.')
+app.get('/', (req, res) => {
+   res.sendFile(__dirname + '/index.html'); 
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
