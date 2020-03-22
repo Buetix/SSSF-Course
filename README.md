@@ -13,6 +13,10 @@ This course will provide understanding of server-side scripting, web application
 - GraphQL
 - Progressive Web Apps
 
+## Weekly tasks
+-Week1 and Week2 in master branch
+-Week4 JSONWebToken in JSONWebToken branch 
+
 ## Project
 #### Project Idea
 TODO
