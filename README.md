@@ -14,8 +14,8 @@ This course will provide understanding of server-side scripting, web application
 - Progressive Web Apps
 
 ## Weekly tasks
--Week1 and Week2 in master branch
--Week4 JSONWebToken in JSONWebToken branch 
+- Week1 and Week2 in master branch
+- Week4 JSONWebToken in JSONWebToken branch 
 
 ## Project
 #### Project Idea
