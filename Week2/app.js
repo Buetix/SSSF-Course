@@ -1,27 +1,21 @@
 'use strict';
 const express = require('express');
-const cors = require('cors');
 const app = express();
-const port = 3000;
-const catRouter = require('./routes/catRoute');
-const userRouter = require('./routes/userRoutes');
 const bodyParser = require('body-parser');
-const multer = require('multer');
+const cors = require('cors');
+const port = 3000;
 const authRoute = require('./routes/authRoute');
-const passport = require('passport');
-const jwt      = require('jsonwebtoken');
+const catRoute = require('./routes/catRoute');
+const userRoute = require('./routes/userRoutes');
+const passport = require('./utils/pass');
 
 app.use(cors());
-app.use('/public', express.static('week2_public_html'));
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 
-app.use('/cat', passport.authenticate('jwt', {session: false}),catRouter);
-app.use('/users', passport.authenticate('jwt', {session: false}),userRouter);
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.get('/', (req, res) => {
-   res.sendFile(__dirname + '/index.html'); 
-});
+app.use('/auth', authRoute);
+app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+

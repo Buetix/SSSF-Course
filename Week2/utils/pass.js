@@ -2,16 +2,15 @@
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const userModel = require('../models/userModel');
-const passportJWT = require("passport-jwt");
-const JWTStrategy   = passportJWT.Strategy;
+const passportJWT = require('passport-jwt');
+const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
 // local strategy for username password login
 passport.use(new Strategy(
-    async (username, password, done) => {
-        const params = [username];
+    (username, password, done) => {
         try {
-            const [user] = await userModel.getUserLogin(params);
+            const user = userModel.getUserLogin(username);
             console.log('Local strategy', user); // result is binary row
             if (user === undefined) {
                 return done(null, false, {message: 'Incorrect email.'});
@@ -20,30 +19,28 @@ passport.use(new Strategy(
                 return done(null, false, {message: 'Incorrect password.'});
             }
             return done(null, {...user}, {message: 'Logged In Successfully'}); // use spread syntax to create shallow copy to get rid of binary row type
-        } catch (err) {
+        }
+        catch (err) {
             return done(err);
         }
     }));
 
+
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : 'your_jwt_secret'
+        secretOrKey: 'your_jwt_secret',
     },
-    function (jwtPayload, done) {
-
+    (jwtPayload, done) => {
+        console.log('payload', jwtPayload);
         //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-        return UserModel.findOneById(jwtPayload.id)
-            .then(user => {
-                return done(null, user);
-            })
-            .catch(err => {
-                return done(err);
-            });
-    }
+        const user = userModel.getUser(jwtPayload.id);
+        console.log('pl user', user);
+        if (user) {
+            return done(null, user);
+        } else {
+            return done(null, false);
+        }
+    },
 ));
 
-
-module.exports = {
-    passport,
-    
-};
+module.exports = passport;

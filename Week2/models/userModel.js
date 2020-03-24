@@ -13,19 +13,27 @@ const users = [
     password: 'qwer',
   },
 ];
-const getUserLogin = async (params) => {
-  try {
-    console.log(params);
-    const [rows] = await promisePool.execute(
-        'SELECT * FROM wop_user WHERE email = ?;',
-        params);
-    return rows;
-  } catch (e) {
-    console.log('error', e.message);
-  }
+
+const getUser = (id) => {
+  const user = users.filter((usr) => {
+    if (usr.id === id) {
+      return usr;
+    }
+  });
+  return user[0];
+};
+
+const getUserLogin = (email) => {
+  const user = users.filter((usr) => {
+    if (usr.email === email) {
+      return usr;
+    }
+  });
+  return user[0];
 };
 
 module.exports = {
   users,
-  getUserLogin
+  getUser,
+  getUserLogin,
 };

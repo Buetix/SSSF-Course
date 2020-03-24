@@ -10,9 +10,7 @@ const upload = multer({dest: './uploads/'});
 router.get('/', catController.cat_list_get);
 router.get('/:id', catController.cat_get);
 
-router.post('/', upload.single('cat'), (req, res, next) => {
-   next(); 
-});
+router.post('/', upload.single('cat'), catController.cat_post);
 
 
 

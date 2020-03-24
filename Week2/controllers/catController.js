@@ -12,7 +12,14 @@ const cat_get = (req, res) => {
     res.json(cat);
 };
 
+const cat_post = (req, res) => {
+    console.log('cat_post', req.body);
+    res.send('With this endpoint you can add cats');
+};
+
+
 module.exports = {
     cat_list_get,
-    cat_get
+    cat_get,
+    cat_post
 };
