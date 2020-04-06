@@ -9,10 +9,22 @@ const app = express();
 const cors = require('cors');
 const passport = require('./utils/pass');
 const authRoute = require('./routes/authRoute');
+const https = require('https');
+const fs = require('fs');
+
+const sslkey = fs.readFileSync('../../ssl-key.pem');
+const sslcert = fs.readFileSync('../../ssl-cert.pem');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+const options = {
+    key: sslkey,
+    cert: sslcert
+};
+
+https.createServer(options, app).listen(8000);
 
 // dummy function to set user (irl: e.g. passport-local)
 const auth = (req, res, next) => {
