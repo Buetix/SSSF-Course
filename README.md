@@ -2,6 +2,8 @@
 
 This course will provide understanding of server-side scripting, web application frameworks and web application security
 
+Link to course project: [Project repository](https://github.com/Buetix/SSSF-project)
+
 ## Course content:
 ---
 - Node.js
