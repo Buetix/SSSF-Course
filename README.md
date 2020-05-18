@@ -20,6 +20,7 @@ Link to course project: [Project repository](https://github.com/Buetix/SSSF-proj
 - Week4 JSONWebToken in JSONWebToken branch 
 
 ## Project
+[Repo here](https://github.com/Buetix/SSSF-Project)
 #### Project Idea
 MyTop10Movies
 
